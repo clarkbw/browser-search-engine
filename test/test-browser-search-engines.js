@@ -29,9 +29,9 @@ const YELP_ENGINE = {
 };
 
 exports['test check current engine'] = function (assert, done) {
-  BrowserSearchEngines.once("current", function(engine) {
+  BrowserSearchEngines.once("current", function (engine) {
     assert.equal(engine.name, AMAZON_NAME);
-    BrowserSearchEngines.once("current", function(e) {
+    BrowserSearchEngines.once("current", function (e) {
       assert.equal(e.name, GOOGLE_NAME);
       done();
     });
@@ -58,9 +58,9 @@ exports['test check current engine'] = function (assert, done) {
 };
 
 exports['test check default engine'] = function (assert, done) {
-  BrowserSearchEngines.once("removed", function(engine) {
+  BrowserSearchEngines.once("removed", function (engine) {
     assert.equal(engine.name, GOOGLE_NAME);
-    BrowserSearchEngines.once("added", function(engine) {
+    BrowserSearchEngines.once("added", function (engine) {
       assert.equal(engine.name, GOOGLE_NAME);
       done();
     });
@@ -166,7 +166,7 @@ exports['test get engine'] = function (assert) {
 };
 
 exports['test yelp 001 add engine'] = function (assert, done) {
-  BrowserSearchEngines.once("added", function(engine) {
+  BrowserSearchEngines.once("added", function (engine) {
     assert.equal(engine.name, YELP_ENGINE.name);
     done();
   });
@@ -191,7 +191,7 @@ exports['test yelp 003 get engine by name'] = function (assert) {
 };
 
 exports['test yelp 004 add suggest'] = function (assert, done) {
-  BrowserSearchEngines.once("suggest", function(engine) {
+  BrowserSearchEngines.once("suggest", function (engine) {
     assert.equal(engine.name, YELP_ENGINE.name);
     done();
   });
@@ -202,7 +202,7 @@ exports['test yelp 004 add suggest'] = function (assert, done) {
 };
 
 exports['test yelp 005 remove engine'] = function (assert, done) {
-  BrowserSearchEngines.once("removed", function(engine) {
+  BrowserSearchEngines.once("removed", function (engine) {
     assert.equal(engine.name, YELP_ENGINE.name);
     done();
   });
@@ -213,7 +213,7 @@ exports['test yelp 005 remove engine'] = function (assert, done) {
 
 exports['test yelp 006 add engine with suggest'] = function (assert) {
   var engine = YELP_ENGINE;
-  engine["suggest"] = YELP_SUGGEST_URL;
+  engine.suggest = YELP_SUGGEST_URL;
   BrowserSearchEngines.add(engine);
   var yelp = BrowserSearchEngines.get(engine.alias);
   assert.notEqual(yelp, null, "Found the Yelp Engine");
@@ -222,12 +222,12 @@ exports['test yelp 006 add engine with suggest'] = function (assert) {
 };
 
 exports['test yelp 007 engine submission types'] = function (assert, done) {
-  BrowserSearchEngines.once("removed", function(engine) {
+  BrowserSearchEngines.once("removed", function (engine) {
     assert.equal(engine.name, YELP_ENGINE.name);
     done();
   });
   var yelp = BrowserSearchEngines.get(YELP_ENGINE.name);
-  var submission = yelp.getSubmission("__SEARCH__").replace("__SEARCH__", "{searchTerms}");;
+  var submission = yelp.getSubmission("__SEARCH__").replace("__SEARCH__", "{searchTerms}");
   var suggestion = yelp.getSuggestion("__SEARCH__").replace("__SEARCH__", "{searchTerms}");
   assert.equal(submission, YELP_ENGINE.url);
   assert.equal(suggestion, YELP_SUGGEST_URL);
@@ -247,7 +247,7 @@ exports['test check supports approved types'] = function (assert) {
 };
 
 exports['test try adding suggest'] = function (assert, done) {
-  BrowserSearchEngines.once("suggest", function(engine) {
+  BrowserSearchEngines.once("suggest", function (engine) {
     assert.equal(engine.name, AMAZON_NAME);
     done();
   });
