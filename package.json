@@ -1,0 +1,9 @@
+{
+  "name": "firefox-browser-search-engine",
+  "fullName": "Firefox Browser Search Engine",
+  "id": "jid1-lfK4CFIqGAZvJQ",
+  "description": "Mozilla Add-on SDK library module for accessing the nsISearchService",
+  "author": "",
+  "license": "MPL 2.0",
+  "version": "0.5"
+}
