@@ -1,9 +1,17 @@
 {
-  "name": "firefox-browser-search-engine",
+  "name": "browser-search-engine",
   "fullName": "Firefox Browser Search Engine",
   "id": "jid1-lfK4CFIqGAZvJQ",
   "description": "Mozilla Add-on SDK library module for accessing the nsISearchService",
-  "author": "",
+  "author": "Bryan Clark (http://clarkbw.net/) <clarkbw@gmail.com>",
   "license": "MPL 2.0",
-  "version": "0.5"
+  "version": "0.6",
+	"repository": {
+	  "type" : "git",
+	  "url" : "https://github.com/clarkbw/browser-search-engine.git",
+	  "web": "https://github.com/clarkbw/browser-search-engine"
+	},
+	"bugs": {
+    "web": "https://github.com/clarkbw/browser-search-engine/issues"
+	},
 }
