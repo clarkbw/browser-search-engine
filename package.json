@@ -5,7 +5,7 @@
   "description": "Mozilla Add-on SDK library module for accessing the nsISearchService",
   "author": "Bryan Clark (http://clarkbw.net/) <clarkbw@gmail.com>",
   "license": "MPL 2.0",
-  "version": "0.6",
+  "version": "1.0.0",
 	"repository": {
 	  "type" : "git",
 	  "url" : "https://github.com/clarkbw/browser-search-engine.git",
