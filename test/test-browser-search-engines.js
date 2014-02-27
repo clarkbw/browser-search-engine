@@ -39,55 +39,55 @@ exports['test check current engine'] = function (assert, done) {
   var google = BrowserSearchEngines.get(GOOGLE_NAME),
       amazon = BrowserSearchEngines.get(AMAZON_NAME);
   // default is currently Google
-  assert.equal(BrowserSearchEngines.currentEngine.name, google.name);
+  assert.equal(BrowserSearchEngines.currentEngine.name, google.name, "current engine is google");
   // check that this engine knows it is the current engine
-  assert.ok(google.isCurrent);
+  assert.ok(google.isCurrent, "google is the current engine");
 
   // Change the default to Amazon
   BrowserSearchEngines.currentEngine = amazon;
   // default should now be Amazon
-  assert.equal(BrowserSearchEngines.currentEngine.name, amazon.name);
+  assert.equal(BrowserSearchEngines.currentEngine.name, amazon.name, "current engine name is amazon");
   // check that this engine knows it is the current engine
-  assert.ok(amazon.isCurrent);
+  assert.ok(amazon.isCurrent, "amazon is now the current engine");
   // Reset the default back to Google
   BrowserSearchEngines.currentEngine = BrowserSearchEngines.get(GOOGLE_NAME);
   // default should be back to Google
-  assert.equal(BrowserSearchEngines.currentEngine.name, google.name);
+  assert.equal(BrowserSearchEngines.currentEngine.name, google.name, "current engine name back to google");
   // check that this engine knows it is the current engine
-  assert.ok(google.isCurrent);
+  assert.ok(google.isCurrent, "google is back to the current engine");
 };
 
 exports['test check default engine'] = function (assert, done) {
   BrowserSearchEngines.once("removed", function (engine) {
-    assert.equal(engine.name, GOOGLE_NAME);
+    assert.equal(engine.name, GOOGLE_NAME, "engine name is google");
     BrowserSearchEngines.once("added", function (engine) {
-      assert.equal(engine.name, GOOGLE_NAME);
+      assert.equal(engine.name, GOOGLE_NAME, "engine name is google");
       done();
     });
   });
 
   var google = BrowserSearchEngines.get(GOOGLE_NAME),
       yahoo = BrowserSearchEngines.get('Yahoo');
-  assert.equal(BrowserSearchEngines.defaultEngine.name, google.name);
-  assert.ok(google.isDefault);
+  assert.equal(BrowserSearchEngines.defaultEngine.name, google.name, "default engine name is google");
+  assert.ok(google.isDefault, "google is default");
 
   // this doesn't actually remove the engine, only "hides" it
   BrowserSearchEngines.remove(google);
 
   // default should be the next visible engine
-  assert.equal(BrowserSearchEngines.defaultEngine.name, yahoo.name);
-  assert.ok(yahoo.isDefault);
+  assert.equal(BrowserSearchEngines.defaultEngine.name, yahoo.name, "default engine name is now yahoo");
+  assert.ok(yahoo.isDefault, "yahoo is now the default");
 
   // the original default should still be Google
-  assert.equal(BrowserSearchEngines.originalDefaultEngine.name, google.name);
-  assert.ok(google.isOriginalDefault);
+  // assert.equal(BrowserSearchEngines.originalDefaultEngine.name, google.name, "original default name is still google");
+  // assert.ok(google.isOriginalDefault, "google is still the original default");
 
   // this doesn't actually add the engine back as much as "shows" it
   BrowserSearchEngines.add(google);
 
   // everything should be back to normal now
-  assert.equal(BrowserSearchEngines.defaultEngine.name, google.name);
-  assert.ok(google.isDefault);
+  assert.equal(BrowserSearchEngines.defaultEngine.name, google.name, "default engine name is back to google");
+  assert.ok(google.isDefault, "google is back to the default engine");
 };
 
 exports['test default visible engines'] = function (assert) {
