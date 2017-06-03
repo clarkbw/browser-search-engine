@@ -1,6 +1,8 @@
 Firefox Browser Search Engine Service
 ===
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/clarkbw/browser-search-engine.svg)](https://greenkeeper.io/)
+
 This is a Mozilla Add-on SDK module for working with the Firefox Search Engine service.
 
 Major Modules
